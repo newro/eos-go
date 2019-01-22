@@ -96,11 +96,11 @@ type ActionTrace struct {
 	Receipt struct {
 		Receiver        AccountName                    `json:"receiver"`
 		ActionDigest    string                         `json:"act_digest"`
-		GlobalSequence  int64                          `json:"global_sequence"`
-		ReceiveSequence int64                          `json:"recv_sequence"`
+		GlobalSequence  JSONInt64                      `json:"global_sequence"`
+		ReceiveSequence JSONInt64                      `json:"recv_sequence"`
 		AuthSequence    []TransactionTraceAuthSequence `json:"auth_sequence"` // [["account", sequence], ["account", sequence]]
-		CodeSequence    int64                          `json:"code_sequence"`
-		ABISequence     int64                          `json:"abi_sequence"`
+		CodeSequence    JSONInt64                      `json:"code_sequence"`
+		ABISequence     JSONInt64                      `json:"abi_sequence"`
 	} `json:"receipt"`
 	Action        *Action        `json:"act"`
 	Elapsed       int            `json:"elapsed"`
@@ -402,8 +402,8 @@ type GetActionsRequest struct {
 	Offset      int64       `json:"offset"`
 }
 type ActionResp struct {
-	GlobalSeq  int64       `json:"global_action_seq"`
-	AccountSeq int64       `json:"account_action_seq"`
+	GlobalSeq  JSONInt64   `json:"global_action_seq"`
+	AccountSeq JSONInt64   `json:"account_action_seq"`
 	BlockNum   uint32      `json:"block_num"`
 	BlockTime  JSONTime    `json:"block_time"`
 	Trace      ActionTrace `json:"action_trace"`
